@@ -6,22 +6,24 @@
     Autores: José Ruiz
              Brandon Perengueza
     Materia: Inteligencia Artificial
-    Programación de la busqueda BFS
+    Programación del Algoritmo de Busqueda en Anchura
     Agente: Agrobot E-Series cosechador de fresas
 """
+
+
 # importación del modulo collections
 from collections import deque
+
+ 
 
 class grafo:
     '''
     Clase que representa un objeto grafico segun los datos otorgados
-
     '''
     # Constructor
     def __init__(self, bordes, numero_nodos):
         '''
         Contructor que inicializa el problema de busqueda
-
         @param bordes:  relaciona un nodo con su nodo vecino
         @param n: numero de nodos del grafo.
         
@@ -34,7 +36,7 @@ class grafo:
         for (origen, destino) in bordes:
             self.lista_adja[origen].append(destino)
             self.lista_adja[destino].append(origen)
-            
+
 # Realizar BFS en el gráfico a partir del vértice `v`
 def BFS(grafo, v, visitado):
 
@@ -42,7 +44,6 @@ def BFS(grafo, v, visitado):
     Función que realiza el recorrido de busqueda en anchura
     @param v: una tupla representativa de los nodos. 
     @param visitado: estado actual del nodo de tipo boolean.
-
     '''
     # crea una cola para hacer la busqueda.
     q = deque()
@@ -51,7 +52,7 @@ def BFS(grafo, v, visitado):
     # poner en cola el vértice fuente.
     q.append(v)
 
-    # Bucle (whi22lrepetitivo hasta que la cola esté vacía.
+    # Bucle (while repetitivo hasta que la cola esté vacía).
     while q:
         # quitar la cola del nodo frontal e imprimirlo.
         v = q.popleft()
@@ -63,12 +64,10 @@ def BFS(grafo, v, visitado):
                 visitado[u] = True
                 q.append(u)
 
-                
 if __name__ == '__main__':
-    
+
     '''
     Clase principal donde se ejecutaran las funciones previamente creadas
-
     '''
  
     # Lista de bordes de gráficos según el diagrama anterior
@@ -77,15 +76,25 @@ if __name__ == '__main__':
     print("")
 
     # Lista de bordes de gráficos según el grafo establecido
+    b_inic =[(1, 2), (1, 3), (1, 4)]
+    b_sec_uno = [(2, 5), (2, 6), (5, 11), (5, 12), (6, 13)]
+    b_sec_dos = [(3, 7), (3, 8), (7, 14),(7, 15), (8, 16), (8, 17)]
+    b_sec_tres = [(4, 9), (4, 10), (9, 18), (9, 19), (10, 20)]
+
     bordes = [
          (1, 2), (1, 3), (1, 4), (2, 5), (2, 6), (5, 11), (5, 12), (6, 13), (3, 7), (3, 8), (7, 14),
-         (7, 15), (8, 16), (8, 17), (4, 9), (4, 10), (9, 18), (9, 19), (10, 20),
+         (7, 15), (8, 16), (8, 17), (4, 9), (4, 10), (9, 18), (9, 19), (10, 20)
     ]
 
     print("")
     # imprime la lista de parcelas relacionadas
     print("Las Rutas de las Parcelas son las siguientes:")
-    print(bordes)
+    print("")
+    print("Ruta inicial: ", b_inic)
+    print("Sección 1: ", b_sec_uno)
+    print("Sección 2: ", b_sec_dos)
+    print("Sección 3: ", b_sec_tres)
+    print("") 
 
     # número total de parcelas que se busca recorrer
     n = int(input("Ingrese el total de parcelas que desea recorrer: "))
